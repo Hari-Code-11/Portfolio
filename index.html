@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hariprasath - Software Developer and .NET Full Stack Developer Portfolio">
+  <title>Hariprasath | .NET Full Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo" href="#home">Hariprasath</a>
+      <div class="nav-right">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">Menu</button>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          role="switch"
+          aria-label="Toggle dark mode"
+          aria-checked="false"
+        >
+          <span class="toggle-track" aria-hidden="true">
+            <span class="toggle-thumb"></span>
+          </span>
+          <span class="toggle-label">Dark</span>
+        </button>
+        <nav id="siteNav">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <!-- <a href="#projects">Projects</a> -->
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Software Developer | .NET Full Stack Developer</p>
+          <h1>Hariprasath</h1>
+          <p class="lead">
+            I build scalable .NET web applications, REST APIs, and optimized SQL solutions
+            that improve workflow efficiency, reliability, and business outcomes.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-outline" href="#contact">Contact Me</a>
+          </div>
+          <ul class="hero-meta">
+            <li><i class="fa-solid fa-location-dot icon-inline" aria-hidden="true"></i>Chennai, Tamil Nadu, India</li>
+            <li><i class="fa-solid fa-clock icon-inline" aria-hidden="true"></i>3+ years of experience</li>
+            <li><i class="fa-solid fa-briefcase icon-inline" aria-hidden="true"></i>Built and deployed 5+ web applications</li>
+          </ul>
+        </div>
+        <div class="photo-card reveal">
+          <img src="./Profile/Hari.jpg" alt="Hariprasath professional headshot">   
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container reveal">
+        <h2>About</h2>
+        <p>
+          Results-driven software developer with hands-on experience across the full software
+          development life cycle, from requirement analysis to deployment and production support.
+          I specialize in C#, ASP.NET MVC, Entity Framework, and SQL Server, with a strong focus
+          on performance, maintainability, and reliable releases.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="section alt-bg">
+      <div class="container reveal">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <article class="card reveal">
+            <h3><i class="fa-solid fa-code icon-inline" aria-hidden="true"></i>Languages</h3>
+            <p>C#, SQL, JavaScript, HTML5, CSS3</p>
+          </article>
+          <article class="card reveal">
+            <h3><i class="fa-solid fa-layer-group icon-inline" aria-hidden="true"></i>Frameworks & Technologies</h3>
+            <p>ASP.NET MVC,.NET core, .NET Framework 4.6.1, Entity Framework, Web API, RESTful Services, AngularJS, Angular</p>
+          </article>
+          <article class="card reveal">
+            <h3><i class="fa-solid fa-database icon-inline" aria-hidden="true"></i>Database</h3>
+            <p>SQL Server 2019, T-SQL,PostgreSQL,MongoDB, Stored Procedures, Query Optimization, Performance Tuning</p>
+          </article>
+          <article class="card reveal">
+            <h3><i class="fa-solid fa-toolbox icon-inline" aria-hidden="true"></i>Tools & Practices</h3>
+            <p>Visual Studio 2019,2022,2026, SSMS 2019,2020,2021, VS Code, Postman, Git, Agile, SDLC, Debugging, Testing, Production Support</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container reveal">
+        <h2>Experience</h2>
+        <article class="timeline-item reveal">
+          <div class="timeline-head">
+            <h3>A-Star Testing & Inspection Pvt Ltd</h3>
+            <p>Software Developer | Jul 2022 - Present | Chennai, India</p>
+          </div>
+          <ul>
+            <li>Develop and support enterprise web applications using C#, ASP.NET MVC, AngularJS, Entity Framework, and SQL Server.</li>
+            <li>Designed and implemented RESTful APIs for system integration and business process automation.</li>
+            <li>Built and deployed 5+ web applications to streamline manual operations and improve workflow efficiency.</li>
+            <li>Optimized SQL queries and stored procedures to improve response time and database performance.</li>
+            <li>Resolved production issues, coordinated releases, and contributed to code reviews, debugging, and testing.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+   <!-- <section id="projects" class="section alt-bg">
+      <div class="container reveal">
+        <h2>Project Highlights</h2>
+        <div class="project-grid">
+          <article class="card reveal">
+            <h3>Enterprise Workflow Automation</h3>
+            <img
+              class="project-media"
+              src="https://via.placeholder.com/900x520.png?text=Project+Screenshot+Placeholder"
+              alt="Enterprise Workflow Automation screenshot placeholder"
+            />
+            <p class="project-subtitle">
+              <strong>Stack:</strong> C#, ASP.NET MVC, Entity Framework, SQL Server, AngularJS
+            </p>
+            <p>
+              Automated manual internal workflows through a centralized web platform, improving operational efficiency and reducing process delays.
+            </p>
+            <div class="project-actions">
+              <a class="btn btn-small btn-outline" href="https://github.com/your-handle" target="_blank" rel="noreferrer"><i class="fa-brands fa-github icon-inline" aria-hidden="true"></i>GitHub</a>
+            </div>
+          </article>
+          <article class="card reveal">
+            <h3>REST API Integration Module</h3>
+            <img
+              class="project-media"
+              src="https://via.placeholder.com/900x520.png?text=Project+Screenshot+Placeholder"
+              alt="REST API Integration Module screenshot placeholder"
+            />
+            <p class="project-subtitle">
+              <strong>Stack:</strong> ASP.NET Web API, Entity Framework, SQL Server
+            </p>
+            <p>
+              Built reusable APIs for cross-system communication and streamlined data exchange for business process automation.
+            </p>
+            <div class="project-actions">
+              <a class="btn btn-small btn-outline" href="https://github.com/your-handle" target="_blank" rel="noreferrer"><i class="fa-brands fa-github icon-inline" aria-hidden="true"></i>GitHub</a>
+            </div>
+          </article>
+          <article class="card reveal">
+            <h3>SQL Performance Optimization</h3>
+            <img
+              class="project-media"
+              src="https://via.placeholder.com/900x520.png?text=Project+Screenshot+Placeholder"
+              alt="SQL Performance Optimization screenshot placeholder"
+            />
+            <p class="project-subtitle">
+              <strong>Stack:</strong> SQL Server, T-SQL, Stored Procedures
+            </p>
+            <p>
+              Improved query performance and reduced response times by tuning SQL statements and optimizing stored procedures.
+            </p>
+            <div class="project-actions">
+              <a class="btn btn-small btn-outline" href="https://github.com/your-handle" target="_blank" rel="noreferrer"><i class="fa-brands fa-github icon-inline" aria-hidden="true"></i>GitHub</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    -->
+
+    <section class="section">
+      <div class="container education reveal">
+        <h2>Education</h2>
+        <p><strong>Master of Computer Applications (MCA) - Pursuing</strong><br>University of Madras, Chennai (2024 - Present)</p>
+        <p><strong>Bachelor of Science in Computer Science</strong><br>Aditanar College of Arts and Science, Tiruchendur (2019 - 2022) | CGPA: 8.75</p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container contact-wrap reveal">
+      <div>
+        <h2>Contact</h2>
+        <p>Open to .NET Developer and Full Stack opportunities.</p>
+      </div>
+      <ul>
+        <li><i class="fa-solid fa-envelope icon-inline" aria-hidden="true"></i><a href="mailto:hariprasath07@gmail.com">hariprasath07@gmail.com</a></li>
+        <li><i class="fa-solid fa-phone icon-inline" aria-hidden="true"></i><a href="tel:+917806859477">+91 7806859477</a></li>
+        <li><i class="fa-brands fa-linkedin-in icon-inline" aria-hidden="true"></i><a href="https://www.linkedin.com/in/hariprasath-p-7007b0297/" target="_blank" rel="noreferrer">linkedin.com/in/hariprasath-p-7007b0297</a></li>
+        <li><i class="fa-brands fa-github icon-inline" aria-hidden="true"></i><a href="https://github.com/Hari-Code-11" target="_blank" rel="noreferrer">github.com/Hari-Code-11</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
