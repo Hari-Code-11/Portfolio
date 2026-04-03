@@ -1,93 +1,114 @@
-const menuToggle = document.getElementById("menuToggle");
-const siteNav = document.getElementById("siteNav");
+// 1. Theme Toggle Logic
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
 
-if (menuToggle && siteNav) {
-  menuToggle.addEventListener("click", () => {
-    siteNav.classList.toggle("is-open");
-  });
+themeToggle.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('portfolio-theme', newTheme);
+});
 
-  siteNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      siteNav.classList.remove("is-open");
-    });
-  });
+// Load saved theme from localStorage
+const savedTheme = localStorage.getItem('portfolio-theme');
+if (savedTheme) {
+    body.setAttribute('data-theme', savedTheme);
 }
 
-const themeToggle = document.getElementById("themeToggle");
+// 2. Mobile Menu Logic
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
 
-function setTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-  localStorage.setItem("theme", theme);
-
-  if (!themeToggle) return;
-  const isDark = theme === "dark";
-  themeToggle.setAttribute("aria-checked", String(isDark));
-  themeToggle.classList.toggle("is-dark", isDark);
-
-  const labelEl = themeToggle.querySelector(".toggle-label");
-  if (labelEl) labelEl.textContent = isDark ? "Dark" : "Light";
-}
-
-function initTheme() {
-  const saved = localStorage.getItem("theme");
-  if (saved === "dark" || saved === "light") {
-    setTheme(saved);
-    return;
-  }
-
-  const prefersDark =
-    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  setTheme(prefersDark ? "dark" : "light");
-}
-
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    const current = document.documentElement.dataset.theme || "light";
-    setTheme(current === "dark" ? "light" : "dark");
-  });
-}
-
-initTheme();
-
-// Used by CSS to only apply scroll-reveal styles when JS is available.
-document.documentElement.classList.add("js-enabled");
-
-// Scroll reveal (adds `is-visible` when elements enter the viewport)
-function initReveal() {
-  const revealEls = document.querySelectorAll(".reveal");
-  if (!revealEls.length) return;
-
-  // Always ensure a starting state in case CSS isn't loaded yet.
-  revealEls.forEach((el, idx) => {
-    el.style.transitionDelay = `${Math.min(idx, 12) * 70}ms`;
-  });
-
-  // Make sure above-the-fold content is visible immediately (avoids a flash).
-  revealEls.forEach((el) => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.85) {
-      el.classList.add("is-visible");
+menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    
+    // Prevent scrolling when menu is open
+    if(navLinks.classList.contains('active')) {
+        body.style.overflow = 'hidden';
+    } else {
+        body.style.overflow = 'auto';
     }
-  });
+});
 
-  if (!("IntersectionObserver" in window)) {
-    revealEls.forEach((el) => el.classList.add("is-visible"));
-    return;
-  }
+// Close menu when a link is clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        body.style.overflow = 'auto';
+    });
+});
 
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          obs.unobserve(entry.target);
+// 3. Scroll Reveal Animation
+const reveal = () => {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const revealTop = el.getBoundingClientRect().top;
+        const revealPoint = 100;
+        if (revealTop < windowHeight - revealPoint) {
+            el.classList.add('active');
         }
-      });
-    },
-    { threshold: 0.15 }
-  );
+    });
+};
 
-  revealEls.forEach((el) => observer.observe(el));
+window.addEventListener('scroll', reveal);
+// Trigger reveal on load
+window.addEventListener('load', reveal);
+
+// 4. Header Dynamic Background
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 50) {
+        header.style.background = 'var(--bg)';
+        header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+    } else {
+        header.style.background = 'transparent';
+        header.style.boxShadow = 'none';
+    }
+});
+
+// Form Submission (Visual Only)
+document.querySelector('.contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.innerHTML = 'Sent Successfully! ✅';
+    btn.style.background = '#22c55e';
+    e.target.reset();
+});
+
+// Function to make the Form work
+var form = document.getElementById("my-form");
+    
+async function handleSubmit(event) {
+  event.preventDefault();
+  var status = document.getElementById("form-status");
+  var btn = document.getElementById("submit-btn");
+  var data = new FormData(event.target);
+  
+  btn.innerHTML = "Sending...";
+  
+  fetch(event.target.action, {
+    method: form.method,
+    body: data,
+    headers: {
+        'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      status.innerHTML = "Thanks! Message sent successfully. ✅";
+      status.className = "success";
+      form.reset();
+      btn.innerHTML = "Send Message";
+    } else {
+      status.innerHTML = "Oops! There was a problem. ❌";
+      status.className = "error";
+      btn.innerHTML = "Try Again";
+    }
+  }).catch(error => {
+    status.innerHTML = "Oops! There was a problem. ❌";
+    status.className = "error";
+  });
 }
-
-initReveal();
+form.addEventListener("submit", handleSubmit);
